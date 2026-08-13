@@ -3,48 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mvGrafix — Apresentação | mvflow</title>
+  <title>mvGrafix — Gestão para gráficas | mvflow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="deck" id="deck">
-    <!-- 01 COVER -->
-    <section class="slide slide--cover is-active" data-slide="0">
-      <div class="cover-bg" aria-hidden="true"></div>
-      <div class="slide-inner cover-inner">
-        <p class="brand-mark">mvflow</p>
-        <h1 class="cover-title">mvGrafix</h1>
-        <p class="cover-lead">Sistema de gestão para gráficas de sublimação e confecção esportiva</p>
-        <div class="cover-meta">
-          <span>Do orçamento ao chão de fábrica</span>
-          <span class="dot"></span>
-          <span>Produção · Vendas · Financeiro</span>
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="logo" href="#topo">
+        <span class="logo-mark">mv</span>Grafix
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#modulos">Módulos</a>
+        <a href="#fluxo">Fluxo</a>
+        <a href="#diferenciais">Diferenciais</a>
+      </nav>
+      <a class="btn btn--sm btn--primary header-cta" href="#contato">Solicitar demonstração</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-badge">mvflow · ERP para gráficas</p>
+          <h1 class="hero-title">
+            Gestão completa para a sua
+            <span class="typewriter" data-words="gráfica,produção,operação">gráfica</span><span class="cursor" aria-hidden="true">|</span>
+          </h1>
+          <p class="hero-lead">
+            O mvGrafix oferece administração completa para sublimação e confecção esportiva —
+            do orçamento ao chão de fábrica, com vendas, produção e financeiro integrados.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#modulos">Conhecer módulos</a>
+            <a class="btn btn--ghost" href="#contato">Falar com especialista</a>
+          </div>
+          <ul class="hero-stats">
+            <li><strong>9</strong><span>módulos integrados</span></li>
+            <li><strong>1</strong><span>fluxo do orçamento à entrega</span></li>
+            <li><strong>100%</strong><span>focado em gráficas</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <div class="browser" aria-hidden="true">
+            <div class="browser-bar">
+              <span></span><span></span><span></span>
+              <div class="browser-url">app.mvgrafix.com.br</div>
+            </div>
+            <figure class="browser-screen">
+              <img src="screenshots/02-dashboard.png" alt="Dashboard do mvGrafix" />
+            </figure>
+          </div>
         </div>
       </div>
-      <p class="slide-hint">Use → ou espaço para avançar</p>
     </section>
 
-    <!-- 02 PROBLEM -->
-    <section class="slide" data-slide="1">
-      <div class="slide-inner">
-        <p class="eyebrow">O cenário</p>
-        <h2 class="slide-title">Gerir uma gráfica sem<br />um sistema próprio é caos</h2>
-        <div class="pain-grid">
-          <article class="pain">
-            <span class="pain-num">01</span>
+    <!-- PROBLEM -->
+    <section class="section section--muted">
+      <div class="container">
+        <p class="section-eyebrow">O cenário</p>
+        <h2 class="section-title">Gerir uma gráfica sem um sistema próprio é caos</h2>
+        <div class="cards cards--3">
+          <article class="card">
+            <span class="card-num">01</span>
             <h3>Pedidos perdidos</h3>
             <p>WhatsApp, planilhas e cadernos. Ninguém sabe em que etapa está cada peça.</p>
           </article>
-          <article class="pain">
-            <span class="pain-num">02</span>
+          <article class="card">
+            <span class="card-num">02</span>
             <h3>Orçamentos soltos</h3>
             <p>Propostas sem padrão, sem PDF, sem conversão direta em pedido de produção.</p>
           </article>
-          <article class="pain">
-            <span class="pain-num">03</span>
+          <article class="card">
+            <span class="card-num">03</span>
             <h3>Caixa no escuro</h3>
             <p>Recebíveis, custos e contas fixas desconectados do que saiu da produção.</p>
           </article>
@@ -52,204 +90,162 @@
       </div>
     </section>
 
-    <!-- 03 SOLUTION + LOGIN -->
-    <section class="slide" data-slide="2">
-      <div class="slide-inner split split--shot">
-        <div>
-          <p class="eyebrow">A solução</p>
-          <h2 class="slide-title">mvGrafix</h2>
-          <p class="slide-lead">
-            ERP operacional que une comercial, produção e financeiro —
-            pensado para sublimação, uniformes e confecção esportiva.
+    <!-- MODULES SHOWCASE -->
+    <section class="section section--modules" id="modulos">
+      <div class="container">
+        <p class="section-eyebrow">Módulos integrados</p>
+        <h2 class="section-title">Tudo que você precisa, em um só sistema</h2>
+        <p class="section-lead">
+          Módulos integrados para controlar orçamentos, pedidos, pipeline de produção,
+          vendas, financeiro e toda a operação da gráfica.
+        </p>
+
+        <div class="module-showcase">
+          <div class="module-list" role="tablist" aria-label="Módulos do mvGrafix">
+            <!-- populated by JS -->
+          </div>
+
+          <div class="module-panel">
+            <div class="module-panel-head">
+              <div>
+                <span class="module-tag" id="module-tag">Operacional</span>
+                <span class="module-counter" id="module-counter">01 / 09</span>
+              </div>
+              <div class="module-nav">
+                <button type="button" class="module-nav-btn" id="module-prev" aria-label="Módulo anterior">←</button>
+                <button type="button" class="module-nav-btn" id="module-next" aria-label="Próximo módulo">→</button>
+              </div>
+            </div>
+
+            <div class="module-detail">
+              <div class="module-detail-copy">
+                <h3 id="module-title">Visão Geral</h3>
+                <p id="module-desc">Painel executivo em tempo real com produção, orçamentos e saúde financeira.</p>
+              </div>
+              <div class="browser browser--module">
+                <div class="browser-bar">
+                  <span></span><span></span><span></span>
+                  <div class="browser-url" id="module-url">app.mvgrafix.com.br/dashboard</div>
+                </div>
+                <figure class="browser-screen">
+                  <img id="module-image" src="screenshots/02-dashboard.png" alt="" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-thumbs" id="module-thumbs" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section class="section section--dark" id="fluxo">
+      <div class="container">
+        <p class="section-eyebrow section-eyebrow--light">Fluxo</p>
+        <h2 class="section-title section-title--light">Da proposta à entrega</h2>
+        <p class="section-lead section-lead--light">
+          Cada etapa alimenta a próxima — sem retrabalho e sem planilha paralela.
+        </p>
+        <ol class="flow-steps">
+          <li>
+            <span class="flow-step-num">01</span>
+            <strong>Orçar</strong>
+            <span>PDF e WhatsApp</span>
+          </li>
+          <li>
+            <span class="flow-step-num">02</span>
+            <strong>Converter</strong>
+            <span>Vira pedido</span>
+          </li>
+          <li>
+            <span class="flow-step-num">03</span>
+            <strong>Produzir</strong>
+            <span>Pipeline Kanban</span>
+          </li>
+          <li>
+            <span class="flow-step-num">04</span>
+            <strong>Finalizar</strong>
+            <span>Entrega + caixa</span>
+          </li>
+          <li>
+            <span class="flow-step-num">05</span>
+            <strong>Receber</strong>
+            <span>Pago / parcial</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT: PIPELINE -->
+    <section class="section highlight">
+      <div class="container highlight-grid">
+        <div class="highlight-copy">
+          <p class="section-eyebrow">Chão de fábrica</p>
+          <h2 class="section-title">Pipeline Kanban da produção</h2>
+          <p class="section-lead">
+            Acompanhe cada peça do novo pedido até a entrega —
+            Impressão, Corte, Costura, Pronto e Entregue em colunas visuais.
           </p>
-          <ul class="pillars pillars--compact">
-            <li>
-              <span class="pillar-label">Comercial</span>
-              <span class="pillar-text">Orçamentos e vendas</span>
-            </li>
-            <li>
-              <span class="pillar-label">Produção</span>
-              <span class="pillar-text">Pipeline Kanban</span>
-            </li>
-            <li>
-              <span class="pillar-label">Financeiro</span>
-              <span class="pillar-text">Caixa e consolidação</span>
-            </li>
+          <ul class="check-list">
+            <li>Etapas no idioma da fábrica</li>
+            <li>Grade esportiva no mesmo pedido</li>
+            <li>Folha de produção por item</li>
+            <li>Arte e detalhes por peça</li>
           </ul>
         </div>
-        <figure class="shot">
-          <img src="screenshots/01-login.png" alt="Tela de login do mvGrafix" />
+        <figure class="highlight-shot">
+          <img src="screenshots/04-pipeline.png" alt="Pipeline Kanban de produção do mvGrafix" />
         </figure>
       </div>
     </section>
 
-    <!-- 04 DASHBOARD -->
-    <section class="slide" data-slide="3">
-      <div class="slide-inner">
-        <p class="eyebrow">Visão Geral</p>
-        <h2 class="slide-title">Painel executivo em tempo real</h2>
-        <p class="slide-lead shot-lead">Monitore produção, orçamentos e saúde financeira em um só lugar.</p>
-        <figure class="shot shot--wide">
-          <img src="screenshots/02-dashboard.png" alt="Dashboard do mvGrafix" />
-        </figure>
-      </div>
-    </section>
-
-    <!-- 05 MODULES -->
-    <section class="slide" data-slide="4">
-      <div class="slide-inner">
-        <p class="eyebrow">Plataforma</p>
-        <h2 class="slide-title">Tudo que a operação precisa</h2>
-        <div class="modules">
-          <div class="mod"><strong>Visão Geral</strong><span>Painel executivo em tempo real</span></div>
-          <div class="mod"><strong>Pedidos</strong><span>Inventário, pipeline e finalizados</span></div>
-          <div class="mod"><strong>Orçamentos</strong><span>PDF, WhatsApp e conversão</span></div>
-          <div class="mod"><strong>Vendas</strong><span>KPIs comerciais e relatórios</span></div>
-          <div class="mod"><strong>Financeiro</strong><span>Caixa, contas e patrimônio</span></div>
-          <div class="mod"><strong>Notas Fiscais</strong><span>Entrada, saída e XML</span></div>
-          <div class="mod mod--wide"><strong>Admin</strong><span>Usuários, permissões e etapas da pipeline</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 ORCAMENTOS -->
-    <section class="slide" data-slide="5">
-      <div class="slide-inner split split--shot">
-        <div>
-          <p class="eyebrow">Comercial</p>
-          <h2 class="slide-title">Orçamentos que viram produção</h2>
-          <p class="slide-lead">Mesma estrutura do pedido: produto, malha, aplicação, cores e grade.</p>
-          <ul class="feature-list">
-            <li>Exportar PDF profissional</li>
-            <li>Enviar direto para WhatsApp</li>
-            <li>Converter em pedido com um clique</li>
-            <li>Descontos, urgência e prazo estimado</li>
-          </ul>
-        </div>
-        <figure class="shot">
+    <!-- HIGHLIGHT: COMMERCIAL -->
+    <section class="section section--muted highlight highlight--reverse">
+      <div class="container highlight-grid">
+        <figure class="highlight-shot">
           <img src="screenshots/06-orcamentos.png" alt="Módulo de orçamentos do mvGrafix" />
         </figure>
-      </div>
-    </section>
-
-    <!-- 07 PEDIDOS -->
-    <section class="slide" data-slide="6">
-      <div class="slide-inner">
-        <p class="eyebrow">Produção</p>
-        <h2 class="slide-title">Pedidos no idioma da gráfica</h2>
-        <p class="slide-lead shot-lead">Grade de tamanhos, detalhes da peça, arte por item e folha de produção.</p>
-        <div class="shot-duo">
-          <figure class="shot">
-            <img src="screenshots/03-pedidos.png" alt="Lista de pedidos do mvGrafix" />
-          </figure>
-          <figure class="shot">
-            <img src="screenshots/05-novo-pedido.png" alt="Formulário de novo pedido" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 08 PIPELINE -->
-    <section class="slide" data-slide="7">
-      <div class="slide-inner">
-        <p class="eyebrow">Chão de fábrica</p>
-        <h2 class="slide-title">Pipeline Kanban da produção</h2>
-        <p class="slide-lead shot-lead">Novo → Impressão → Corte → Costura → Pronto → Entregue</p>
-        <figure class="shot shot--wide">
-          <img src="screenshots/04-pipeline.png" alt="Pipeline de produção Kanban do mvGrafix" />
-        </figure>
-      </div>
-    </section>
-
-    <!-- 09 VENDAS -->
-    <section class="slide" data-slide="8">
-      <div class="slide-inner split split--shot">
-        <div>
-          <p class="eyebrow">Comercial</p>
-          <h2 class="slide-title">Vendas com visão de negócio</h2>
-          <p class="slide-lead">Separado do caixa: o comercial enxerga o ciclo sem misturar com a tesouraria.</p>
-          <ul class="feature-list">
-            <li>Novas, finalizadas, pagas e a receber</li>
-            <li>Ticket médio e pedidos em produção</li>
-            <li>Filtros por período e pagamento</li>
-            <li>BI e relatório imprimível</li>
+        <div class="highlight-copy">
+          <p class="section-eyebrow">Comercial</p>
+          <h2 class="section-title">Orçamentos que viram produção</h2>
+          <p class="section-lead">
+            Mesma estrutura do pedido: produto, malha, aplicação, cores e grade.
+            Exporte PDF, envie pelo WhatsApp e converta em pedido com um clique.
+          </p>
+          <ul class="check-list">
+            <li>Descontos, urgência e prazo estimado</li>
+            <li>Vendas separadas do caixa</li>
+            <li>BI comercial e relatórios</li>
+            <li>Fechamento automático no financeiro</li>
           </ul>
         </div>
-        <figure class="shot">
-          <img src="screenshots/07-vendas.png" alt="Módulo de vendas do mvGrafix" />
-        </figure>
       </div>
     </section>
 
-    <!-- 10 FINANCEIRO -->
-    <section class="slide" data-slide="9">
-      <div class="slide-inner">
-        <p class="eyebrow">Tesouraria</p>
-        <h2 class="slide-title">Financeiro conectado à produção</h2>
-        <p class="slide-lead shot-lead">Receita, despesas, patrimônio, caixa e contas fixas — no mesmo fluxo dos pedidos.</p>
-        <figure class="shot shot--wide">
-          <img src="screenshots/08-financeiro.png" alt="Módulo financeiro do mvGrafix" />
-        </figure>
-      </div>
-    </section>
-
-    <!-- 11 FISCAL + ADMIN -->
-    <section class="slide" data-slide="10">
-      <div class="slide-inner">
-        <p class="eyebrow">Controle</p>
-        <h2 class="slide-title">Notas fiscais e acessos</h2>
-        <div class="shot-duo">
-          <figure class="shot">
-            <figcaption>Notas Fiscais</figcaption>
-            <img src="screenshots/09-notas-fiscais.png" alt="Módulo de notas fiscais" />
-          </figure>
-          <figure class="shot">
-            <figcaption>Admin · permissões</figcaption>
-            <img src="screenshots/10-admin.png" alt="Painel administrativo do mvGrafix" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 12 FLOW -->
-    <section class="slide" data-slide="11">
-      <div class="slide-inner">
-        <p class="eyebrow">Fluxo</p>
-        <h2 class="slide-title">Da proposta à entrega</h2>
-        <ol class="flow">
-          <li><strong>Orçar</strong><span>PDF e WhatsApp</span></li>
-          <li><strong>Converter</strong><span>Vira pedido</span></li>
-          <li><strong>Produzir</strong><span>Pipeline Kanban</span></li>
-          <li><strong>Finalizar</strong><span>Entrega + caixa</span></li>
-          <li><strong>Receber</strong><span>Pago / parcial</span></li>
-        </ol>
-        <p class="flow-note">Cada etapa alimenta a próxima — sem retrabalho e sem planilha paralela.</p>
-      </div>
-    </section>
-
-    <!-- 13 DIFFERENTIALS -->
-    <section class="slide" data-slide="12">
-      <div class="slide-inner">
-        <p class="eyebrow">Por que mvGrafix</p>
-        <h2 class="slide-title">Feito para sublimação,<br />não adaptado</h2>
-        <div class="diff-grid">
-          <article class="diff">
-            <span>01</span>
+    <!-- DIFFERENTIALS -->
+    <section class="section" id="diferenciais">
+      <div class="container">
+        <p class="section-eyebrow">Por que mvGrafix</p>
+        <h2 class="section-title">Feito para sublimação, não adaptado</h2>
+        <div class="cards cards--2">
+          <article class="card card--border">
+            <span class="card-num">01</span>
             <h3>Linguagem da fábrica</h3>
             <p>Impressão, corte, costura — etapas que o time já conhece.</p>
           </article>
-          <article class="diff">
-            <span>02</span>
+          <article class="card card--border">
+            <span class="card-num">02</span>
             <h3>Grade esportiva</h3>
             <p>Tradicional, babylook e infantil no mesmo pedido.</p>
           </article>
-          <article class="diff">
-            <span>03</span>
+          <article class="card card--border">
+            <span class="card-num">03</span>
             <h3>Comercial ≠ caixa</h3>
             <p>Vendas e financeiro com papéis claros para cada área.</p>
           </article>
-          <article class="diff">
-            <span>04</span>
+          <article class="card card--border">
+            <span class="card-num">04</span>
             <h3>Fechamento automático</h3>
             <p>Pedido finalizado gera recebível e entrada no caixa.</p>
           </article>
@@ -257,24 +253,56 @@
       </div>
     </section>
 
-    <!-- 14 CLOSE -->
-    <section class="slide slide--cover slide--close" data-slide="13">
-      <div class="cover-bg" aria-hidden="true"></div>
-      <div class="slide-inner cover-inner">
-        <p class="brand-mark">mvflow</p>
-        <h1 class="cover-title cover-title--sm">mvGrafix</h1>
-        <p class="cover-lead">Sua gráfica sob controle — do orçamento à entrega.</p>
-        <p class="close-cta">Obrigado</p>
+    <!-- PILLARS -->
+    <section class="section section--pillars">
+      <div class="container pillars">
+        <div class="pillar">
+          <span class="pillar-icon">◆</span>
+          <h3>Comercial</h3>
+          <p>Orçamentos, vendas, PDF, WhatsApp e conversão em pedido.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">◆</span>
+          <h3>Produção</h3>
+          <p>Pedidos, pipeline Kanban, grade e folha de produção.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">◆</span>
+          <h3>Financeiro</h3>
+          <p>Caixa, contas, patrimônio e consolidação conectada aos pedidos.</p>
+        </div>
       </div>
     </section>
-  </div>
 
-  <nav class="chrome" aria-label="Controles da apresentação">
-    <button type="button" id="prev" aria-label="Slide anterior">←</button>
-    <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
-    <span class="counter" id="counter">1 / 14</span>
-    <button type="button" id="next" aria-label="Próximo slide">→</button>
-  </nav>
+    <!-- CTA -->
+    <section class="section cta" id="contato">
+      <div class="container cta-inner">
+        <p class="section-eyebrow section-eyebrow--light">mvflow</p>
+        <h2 class="cta-title">Pronto para levar sua gráfica ao próximo nível?</h2>
+        <p class="cta-lead">
+          Automatize orçamentos, produção, vendas, relatórios e gestão completa
+          com o ecossistema mvGrafix.
+        </p>
+        <a class="btn btn--primary btn--lg" href="mailto:contato@mvflow.com.br">Solicitar demonstração</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="logo logo--footer" href="#topo">
+        <span class="logo-mark">mv</span>Grafix
+      </a>
+      <p>© <span id="year"></span> mvflow · Sistema de gestão para gráficas</p>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span>Posso te ajudar?</span>
+  </a>
 
   <script src="app.js"></script>
 </body>

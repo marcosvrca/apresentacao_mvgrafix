@@ -1,16 +1,13 @@
 # Apresentação mvGrafix
 
-Deck comercial do **mvGrafix**, sistema de gestão para gráficas da **mvflow**.
+Landing page comercial do **mvGrafix**, inspirada no estilo da [Unitech Sistemas](https://www.unitechsistemas.com.br/) — scroll contínuo, hero com typewriter, showcase interativo de módulos e CTAs.
 
 ## Como apresentar
 
 1. Abra `index.html` no navegador (Chrome/Edge recomendado).
-2. Controles:
-   - `→` / `Espaço` — próximo slide
-   - `←` — slide anterior
-   - `F` — tela cheia
-   - Arraste no celular / toque nas setas da barra inferior
-3. Para exportar PDF: `Ctrl+P` → Destino: Salvar como PDF.
+2. Navegue pelas seções pelo menu ou scroll.
+3. Na seção **Módulos**, clique nos itens da lista ou use as setas — o carrossel avança automaticamente.
+4. Para exportar PDF: `Ctrl+P` → Destino: Salvar como PDF.
 
 ## Screenshots
 
@@ -22,19 +19,14 @@ Para recapturar (com o app rodando em `http://localhost:3000`):
 node capture-screens.mjs
 ```
 
-## Conteúdo (14 slides)
+## Seções
 
-1. Capa — mvGrafix / mvflow  
-2. O problema  
-3. A solução + login real  
-4. Dashboard  
-5. Módulos  
-6. Orçamentos  
-7. Pedidos  
-8. Pipeline  
-9. Vendas  
-10. Financeiro  
-11. Notas Fiscais e Admin  
-12. Fluxo completo  
-13. Diferenciais  
-14. Encerramento  
+1. Hero — headline, typewriter e preview do dashboard  
+2. O cenário — dores da operação  
+3. Módulos integrados — carrossel interativo (9 módulos)  
+4. Fluxo — orçamento à entrega  
+5. Pipeline Kanban — destaque produção  
+6. Orçamentos — destaque comercial  
+7. Diferenciais  
+8. Pilares — Comercial · Produção · Financeiro  
+9. CTA final  
