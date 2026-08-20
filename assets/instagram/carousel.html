@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-muted: #f4f6f9;
+      --bg-dark: #0c1222;
+      --surface: #ffffff;
+      --line: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --soft: #94a3b8;
+      --accent: #059669;
+      --accent-soft: rgba(5, 150, 105, 0.1);
+      --font-display: "Plus Jakarta Sans", sans-serif;
+      --font-body: "Inter", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      font-family: var(--font-body);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 56px 52px;
+    }
+
+    .slide--light {
+      background:
+        radial-gradient(ellipse 70% 50% at 8% -8%, rgba(5, 150, 105, 0.1), transparent 55%),
+        radial-gradient(ellipse 50% 36% at 100% 8%, rgba(14, 165, 233, 0.07), transparent 50%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+
+    .slide--muted {
+      background: var(--bg-muted);
+    }
+
+    .slide--dark {
+      background: var(--bg-dark);
+      color: #f8fafc;
+    }
+
+    .slide--cta {
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 100%, rgba(5, 150, 105, 0.22), transparent 58%),
+        linear-gradient(180deg, #0c1222 0%, #111827 100%);
+      color: #fff;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .logo span { color: var(--accent); }
+    .slide--dark .logo span,
+    .slide--cta .logo span { color: #34d399; }
+
+    .counter {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--soft);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.06em;
+    }
+
+    .slide--dark .counter,
+    .slide--cta .counter { color: #64748b; }
+
+    .eyebrow {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .slide--dark .eyebrow,
+    .slide--cta .eyebrow { color: #6ee7b7; }
+
+    .badge {
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 10px 18px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 58px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .slide--dark h1,
+    .slide--cta h1 { color: #fff; }
+
+    .lead {
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 18em;
+      margin-bottom: 28px;
+    }
+
+    .slide--dark .lead,
+    .slide--cta .lead { color: #94a3b8; }
+
+    .grow {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .browser {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .browser-bar i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .browser-bar i:nth-child(1) { background: #f87171; }
+    .browser-bar i:nth-child(2) { background: #fbbf24; }
+    .browser-bar i:nth-child(3) { background: #34d399; }
+
+    .browser-url {
+      flex: 1;
+      margin-left: 8px;
+      padding: 7px 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--soft);
+      text-align: center;
+    }
+
+    .browser-screen {
+      flex: 1;
+      min-height: 0;
+      background: #020617;
+    }
+
+    .browser-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .stats {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+      flex-shrink: 0;
+    }
+
+    .stats strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    .stats span {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .hint {
+      margin-top: 22px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px 30px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card--border {
+      border-left: 4px solid var(--accent);
+    }
+
+    .card-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .mod {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mod-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .mod strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .mod span {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .mod--accent {
+      background: var(--accent-soft);
+      border-color: rgba(5, 150, 105, 0.25);
+    }
+
+    .mod--wide {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .flow {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+      justify-content: flex-start;
+      padding-top: 8px;
+    }
+
+    .flow li {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 16px;
+      padding: 0 28px;
+      flex: 1;
+    }
+
+    .flow-num {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #6ee7b7;
+    }
+
+    .flow strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .flow em {
+      font-style: normal;
+      font-size: 20px;
+      color: #94a3b8;
+    }
+
+    .checks {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+      flex-shrink: 0;
+    }
+
+    .checks li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .checks li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--accent);
+    }
+
+    .mail-shot {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      background: #eef2f7;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .mail-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+      flex-shrink: 0;
+    }
+
+    .pillars-4 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pillar {
+      text-align: center;
+      padding: 22px 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .pillar-icon {
+      display: block;
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .pillar p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .cta-title {
+      font-size: 64px;
+      max-width: 12ch;
+      margin-inline: auto;
+    }
+
+    .cta-lead {
+      font-size: 26px;
+      max-width: 20em;
+      margin-inline: auto;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 24px;
+      padding: 22px 40px;
+      border-radius: 999px;
+      box-shadow: 0 10px 28px rgba(5, 150, 105, 0.35);
+      margin-bottom: 22px;
+    }
+
+    .cta-mail {
+      font-size: 20px;
+      color: #94a3b8;
+    }
+
+    .stack { height: 40px; }
+  </style>
+</head>
+<body>
+
+  <!-- 01 CAPA -->
+  <section class="slide slide--light" id="s01">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">01 / 10</div>
+    </div>
+    <p class="badge">mvflow · Gestão de produção e pedidos</p>
+    <h1>Gestão completa para a sua <em>produção</em></h1>
+    <p class="lead">Do orçamento ao chão de fábrica — vendas, produção, financeiro e IA integrados.</p>
+    <div class="grow">
+      <div class="browser">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <div class="browser-url">app.mvgrafix.com.br</div>
+        </div>
+        <div class="browser-screen">
+          <img src="../tela-pedidos-real.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <ul class="stats">
+      <li><strong>10</strong><span>módulos integrados</span></li>
+      <li><strong>1</strong><span>fluxo até a entrega</span></li>
+      <li><strong>100%</strong><span>gestão de pedidos</span></li>
+    </ul>
+    <p class="hint">Deslize para conhecer →</p>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 02 CENÁRIO -->
+  <section class="slide slide--muted" id="s02">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">02 / 10</div>
+    </div>
+    <p class="eyebrow">O cenário</p>
+    <h1>Gerir produção sem um sistema próprio é caos</h1>
+    <div class="cards">
+      <article class="card">
+        <span class="card-num">01</span>
+        <h3>Pedidos perdidos</h3>
+        <p>WhatsApp, planilhas e cadernos. Ninguém sabe em que etapa está cada pedido.</p>
+      </article>
+      <article class="card">
+        <span class="card-num">02</span>
+        <h3>Orçamentos soltos</h3>
+        <p>Propostas sem padrão, sem PDF, sem conversão direta em pedido de produção.</p>
+      </article>
+      <article class="card">
+        <span class="card-num">03</span>
+        <h3>Caixa no escuro</h3>
+        <p>Recebíveis, custos e contas fixas desconectados do que saiu da produção.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 03 MÓDULOS -->
+  <section class="slide slide--light" id="s03">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">03 / 10</div>
+    </div>
+    <p class="eyebrow">Módulos integrados</p>
+    <h1>Tudo que você precisa, em um só sistema</h1>
+    <p class="lead" style="margin-bottom: 22px;">Orçamentos, pedidos, pipeline, IA, vendas e financeiro — a operação inteira.</p>
+    <div class="modules">
+      <div class="mod"><span class="mod-num">01</span><div><strong>Visão Geral</strong><span>Painel em tempo real.</span></div></div>
+      <div class="mod"><span class="mod-num">02</span><div><strong>Pedidos</strong><span>Itens, detalhes e folha.</span></div></div>
+      <div class="mod"><span class="mod-num">03</span><div><strong>Pipeline</strong><span>Kanban até a entrega.</span></div></div>
+      <div class="mod"><span class="mod-num">04</span><div><strong>Novo Pedido</strong><span>Produto, urgência e etapas.</span></div></div>
+      <div class="mod"><span class="mod-num">05</span><div><strong>Orçamentos</strong><span>PDF e WhatsApp.</span></div></div>
+      <div class="mod"><span class="mod-num">06</span><div><strong>Vendas</strong><span>KPIs e relatórios.</span></div></div>
+      <div class="mod"><span class="mod-num">07</span><div><strong>Financeiro</strong><span>Caixa e contas.</span></div></div>
+      <div class="mod"><span class="mod-num">08</span><div><strong>Notas Fiscais</strong><span>Entrada, saída e XML.</span></div></div>
+      <div class="mod"><span class="mod-num">09</span><div><strong>Admin</strong><span>Usuários e etapas.</span></div></div>
+      <div class="mod mod--accent mod--wide"><span class="mod-num">10</span><div><strong>Sublime IA</strong><span>Pedidos, orçamentos e financeiro num painel — a leitura fica no sistema.</span></div></div>
+    </div>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 04 FLUXO -->
+  <section class="slide slide--dark" id="s04">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">04 / 10</div>
+    </div>
+    <p class="eyebrow">Fluxo</p>
+    <h1>Da proposta à entrega</h1>
+    <p class="lead">Cada etapa alimenta a próxima. A IA lê prazos, funil e caixa no mesmo fluxo.</p>
+    <ol class="flow">
+      <li>
+        <span class="flow-num">01</span>
+        <strong>Orçar</strong>
+        <em>PDF e WhatsApp</em>
+      </li>
+      <li>
+        <span class="flow-num">02</span>
+        <strong>Converter</strong>
+        <em>Vira pedido</em>
+      </li>
+      <li>
+        <span class="flow-num">03</span>
+        <strong>Produzir</strong>
+        <em>Pipeline Kanban</em>
+      </li>
+      <li>
+        <span class="flow-num">04</span>
+        <strong>Finalizar</strong>
+        <em>Entrega + caixa</em>
+      </li>
+      <li>
+        <span class="flow-num">05</span>
+        <strong>Receber</strong>
+        <em>Pago / parcial</em>
+      </li>
+    </ol>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 05 PIPELINE -->
+  <section class="slide slide--light" id="s05">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">05 / 10</div>
+    </div>
+    <p class="eyebrow">Chão de fábrica</p>
+    <h1>Pipeline Kanban da produção</h1>
+    <p class="lead">Acompanhe cada pedido até a entrega. A IA lê prazos e urgentes da fila.</p>
+    <div class="grow">
+      <div class="browser">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <div class="browser-url">app.mvgrafix.com.br/pipeline</div>
+        </div>
+        <div class="browser-screen">
+          <img src="../tela-pedidos-real.png" alt="" style="object-position: center bottom;" />
+        </div>
+      </div>
+    </div>
+    <ul class="checks">
+      <li>Etapas no idioma da sua operação</li>
+      <li>Itens e detalhes no mesmo pedido</li>
+      <li>A IA acompanha prazos e urgentes da fila</li>
+    </ul>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 06 ORÇAMENTOS -->
+  <section class="slide slide--muted" id="s06">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">06 / 10</div>
+    </div>
+    <p class="eyebrow">Comercial</p>
+    <h1>Orçamentos que viram produção</h1>
+    <p class="lead">Mesma estrutura do pedido. A IA aponta orçamentos parados e promissores.</p>
+    <div class="grow">
+      <div class="browser">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <div class="browser-url">app.mvgrafix.com.br/pedidos/novo</div>
+        </div>
+        <div class="browser-screen">
+          <img src="../../screenshots/05-novo-pedido.png" alt="" style="object-position: left top;" />
+        </div>
+      </div>
+    </div>
+    <ul class="checks">
+      <li>PDF profissional e envio pelo WhatsApp</li>
+      <li>Conversão em pedido com um clique</li>
+      <li>A IA aponta orçamentos parados e promissores</li>
+    </ul>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 07 DIFERENCIAIS -->
+  <section class="slide slide--light" id="s07">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">07 / 10</div>
+    </div>
+    <p class="eyebrow">Por que mvGrafix</p>
+    <h1>Adaptado para quem produz</h1>
+    <p class="lead" style="margin-bottom: 22px;">Gráficas, estamparias e qualquer empresa com gestão de pedidos — com Sublime IA no painel.</p>
+    <div class="diff-grid">
+      <article class="card card--border">
+        <span class="card-num">01</span>
+        <h3>Etapas da sua operação</h3>
+        <p>Configure o pipeline no idioma da fábrica — ou nas etapas que você usa.</p>
+      </article>
+      <article class="card card--border">
+        <span class="card-num">02</span>
+        <h3>Gestão de pedidos</h3>
+        <p>Do orçamento à entrega, o pedido fica sob controle em qualquer produção.</p>
+      </article>
+      <article class="card card--border">
+        <span class="card-num">03</span>
+        <h3>Comercial ≠ caixa</h3>
+        <p>Vendas e financeiro com papéis claros para cada área.</p>
+      </article>
+      <article class="card card--border">
+        <span class="card-num">04</span>
+        <h3>Fechamento automático</h3>
+        <p>Pedido finalizado gera recebível e entrada no caixa.</p>
+      </article>
+    </div>
+    <div class="pillars pillars-4">
+      <div class="pillar">
+        <span class="pillar-icon">◆</span>
+        <h3>Comercial</h3>
+        <p>Orçamentos, PDF, WhatsApp e conversão.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">◆</span>
+        <h3>Produção</h3>
+        <p>Pedidos, Kanban e folha.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">◆</span>
+        <h3>Financeiro</h3>
+        <p>Caixa, contas e consolidação.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">◆</span>
+        <h3>Sublime IA</h3>
+        <p>Leitura de pedidos, orçamentos e caixa.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 08 ALERTAS EMAIL -->
+  <section class="slide slide--muted" id="s08">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">08 / 10</div>
+    </div>
+    <p class="eyebrow">Alertas</p>
+    <h1>Prazos no e-mail de quem opera os pedidos</h1>
+    <p class="lead">Atrasados, urgentes e a vencer. Só recebe quem tem acesso ao módulo de Pedidos.</p>
+    <div class="grow">
+      <div class="mail-shot">
+        <img src="../../screenshots/12-email-prazos.png" alt="" />
+      </div>
+    </div>
+    <ul class="checks">
+      <li>E-mail automático para quem acessa Pedidos</li>
+      <li>Atrasados, urgentes e a vencer em 2 dias</li>
+      <li>O sino do sistema avisa na hora</li>
+    </ul>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 09 IA -->
+  <section class="slide slide--light" id="s09">
+    <div class="topbar">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">09 / 10</div>
+    </div>
+    <p class="eyebrow">Sublime IA</p>
+    <h1>A leitura fica no sistema</h1>
+    <p class="lead">Pedidos, orçamentos e financeiro num painel. O resumo não vai por e-mail.</p>
+    <div class="grow">
+      <div class="browser">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <div class="browser-url">app.mvgrafix.com.br/ia</div>
+        </div>
+        <div class="browser-screen">
+          <img src="../../screenshots/12-ia-full.png" alt="" style="object-fit: contain; object-position: top center; background: #020617;" />
+        </div>
+      </div>
+    </div>
+    <ul class="checks">
+      <li>Prazos, urgentes e peças em produção</li>
+      <li>Funil, orçamentos antigos e promissores</li>
+      <li>Receber em atraso e o que atacar hoje</li>
+    </ul>
+  </section>
+
+  <div class="stack"></div>
+
+  <!-- 10 CTA -->
+  <section class="slide slide--cta" id="s10">
+    <div class="topbar" style="width: 100%; position: absolute; top: 56px; left: 0; padding: 0 56px;">
+      <div class="logo">mv<span>Grafix</span></div>
+      <div class="counter">10 / 10</div>
+    </div>
+    <p class="eyebrow">mvflow</p>
+    <h1 class="cta-title">Pronto para levar sua produção ao próximo nível?</h1>
+    <p class="lead cta-lead">Automatize orçamentos, produção, vendas, IA, alertas e gestão completa com o ecossistema mvGrafix.</p>
+    <div class="btn">Solicitar demonstração</div>
+    <p class="cta-mail">contato@mvflow.com.br</p>
+  </section>
+
+</body>
+</html>

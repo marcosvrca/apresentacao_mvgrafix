@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; }
+    .mail {
+      width: 720px;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      color: #111827;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .mail-bar {
+      background: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+    .mail-bar strong { color: #111827; }
+    .mail-body { padding: 22px 24px 26px; line-height: 1.45; }
+    h2 { font-size: 22px; margin: 0 0 12px; }
+    h3 { font-size: 16px; margin: 20px 0 8px; }
+    p { font-size: 15px; margin: 0 0 10px; }
+    ul { padding-left: 18px; margin: 0; font-size: 14px; }
+    li { margin: 6px 0; }
+    .urgente { color: #b91c1c; font-weight: 700; }
+    .cta {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 14px;
+      background: #111827;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="mail" id="mail">
+    <div class="mail-bar">
+      De: <strong>mvGrafix</strong> · Para: equipe com acesso a Pedidos<br />
+      Assunto: <strong>Pedidos: 6 atrasado(s) · 2 a vencer</strong>
+    </div>
+    <div class="mail-body">
+      <h2>Prazos de pedidos</h2>
+      <p>Olá, equipe,</p>
+      <p>Resumo diário de pedidos ativos com prazo vencido ou próximo do vencimento.</p>
+      <h3 style="color:#b91c1c;">Em atraso (6)</h3>
+      <ul>
+        <li><strong>#1042</strong> — Acadêmicos Norte — prazo 12/08 — Novo <span class="urgente">URGENTE</span></li>
+        <li><strong>#1043</strong> — Escola Horizonte — prazo 14/08 — Impressão</li>
+        <li><strong>#1044</strong> — Clube Atlético Regional — prazo 13/08 — Corte</li>
+        <li><strong>#1045</strong> — Time Vila Nova — prazo 11/08 — Costura <span class="urgente">URGENTE</span></li>
+        <li><strong>#1046</strong> — Liga Municipal — prazo 15/08 — Pronto</li>
+        <li><strong>#1047</strong> — Colégio Central — prazo 10/08 — Impressão</li>
+      </ul>
+      <h3 style="color:#b45309;">A vencer em até 2 dias (2)</h3>
+      <ul>
+        <li><strong>#1048</strong> — Escola Horizonte — prazo hoje — Corte</li>
+        <li><strong>#1049</strong> — Time Vila Nova — prazo amanhã — Novo <span class="urgente">URGENTE</span></li>
+      </ul>
+      <a class="cta" href="#">Abrir pedidos</a>
+    </div>
+  </div>
+</body>
+</html>
