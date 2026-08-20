@@ -36,7 +36,7 @@
       num: "04",
       tag: "Operacional",
       title: "Novo Pedido",
-      desc: "Formulário pensado para gráficas: produto, malha, aplicação, cores, grade esportiva e urgência.",
+      desc: "Formulário pensado para produção: produto, detalhes do item, urgência e o que sua operação precisa registrar.",
       url: "app.mvgrafix.com.br/pedidos/novo",
       image: "screenshots/05-novo-pedido.png",
       alt: "Formulário de novo pedido",
@@ -90,6 +90,17 @@
       url: "app.mvgrafix.com.br/admin",
       image: "screenshots/10-admin.png",
       alt: "Painel administrativo",
+    },
+    {
+      id: "ia",
+      num: "10",
+      tag: "Inteligência",
+      badge: "Novo",
+      title: "Sublime IA",
+      desc: "Painel no sistema com leitura de pedidos, orçamentos e financeiro: prazos, funil comercial e o que receber.",
+      url: "app.mvgrafix.com.br/ia",
+      image: "screenshots/12-ia-full.png",
+      alt: "Painel Sublime IA do mvGrafix",
     },
   ];
 

@@ -730,6 +730,18 @@ a {
   background: #eef2f7;
 }
 
+.highlight-shot--tall img {
+  aspect-ratio: 16 / 12;
+  object-fit: contain;
+  object-position: top center;
+  background: #0b1222;
+}
+
+.highlight-shot--mail img {
+  object-fit: contain;
+  background: #f4f6f9;
+}
+
 .check-list {
   list-style: none;
   display: grid;
@@ -757,7 +769,7 @@ a {
 /* Pillars */
 .pillars {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -886,6 +898,10 @@ a {
 
   .hero-visual {
     order: -1;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr 1fr;
   }
 
   .module-list {
