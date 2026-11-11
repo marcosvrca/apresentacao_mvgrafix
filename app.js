@@ -118,11 +118,11 @@
       num: "12",
       tag: "Inteligência",
       badge: "Novo",
-      title: "MV Graphics IA",
+      title: "MV Graphics",
       desc: "Leitura da operação no próprio sistema: cruza pedidos, prazos, orçamentos e recebimentos para mostrar o que atacar hoje.",
       url: "app.mvgrafix.com.br/ia",
       image: "screenshots/11-ia.png",
-      alt: "Painel MV Graphics IA do mvGrafix",
+      alt: "Painel MV Graphics do mvGrafix",
     },
   ];
 

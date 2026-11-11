@@ -74,21 +74,43 @@ async function brandForPresentation(page) {
       String(value || "")
         .replace(/DS Designer/gi, "mvGrafix")
         .replace(/DS Design/gi, "mvGrafix")
-        .replace(/\bDS IA\b/gi, "MV Graphics IA")
-        .replace(/\bA DS IA\b/gi, "A MV Graphics IA");
+        .replace(/SuaGrafica/gi, "mvGrafix")
+        .replace(/Sublime IA/gi, "MV Graphics")
+        .replace(/\bSublime\b/gi, "MV Graphics")
+        .replace(/\bDS IA\b/gi, "MV Graphics")
+        .replace(/A DS IA/gi, "A MV Graphics")
+        .replace(/A Sublime IA/gi, "A MV Graphics")
+        .replace(/Leitura Sublime IA/gi, "Leitura MV Graphics")
+        .replace(/Leitura DS IA/gi, "Leitura MV Graphics");
 
-    document.querySelectorAll('a[aria-label*="DS Designer"], a[aria-label*="DS Design"]').forEach((link) => {
+    document.querySelectorAll("header a").forEach((link) => {
+      const label = `${link.getAttribute("aria-label") || ""} ${link.textContent || ""}`;
+      if (!/DS Designer|DS Design|Sublime|SuaGrafica|mvGrafix|início/i.test(label) && !link.querySelector("h1")) {
+        return;
+      }
+      if (!link.querySelector("h1") && !link.querySelector("img")) return;
+
       link.setAttribute("aria-label", "mvGrafix — início");
-      const title = link.querySelector("h1");
-      if (title) title.textContent = "mvGrafix";
-      const subtitle = link.querySelector("p");
-      if (subtitle) subtitle.textContent = "Gestão de produção";
-      link.querySelectorAll("img").forEach((img) => {
-        img.alt = "mvGrafix";
-        const wrap = img.closest("div");
-        if (wrap) wrap.style.display = "none";
-        else img.style.display = "none";
+      link.querySelectorAll("img, picture, svg").forEach((el) => {
+        const wrap = el.closest("div");
+        if (wrap && wrap !== link) wrap.remove();
+        else el.remove();
       });
+      let title = link.querySelector("h1");
+      if (!title) {
+        title = document.createElement("h1");
+        title.className = "whitespace-nowrap text-lg font-bold leading-tight tracking-tight text-white";
+        link.appendChild(title);
+      }
+      title.textContent = "mvGrafix";
+      title.style.display = "block";
+      let subtitle = link.querySelector("p");
+      if (!subtitle) {
+        subtitle = document.createElement("p");
+        subtitle.className = "whitespace-nowrap text-[10px] font-bold uppercase leading-tight tracking-widest text-slate-400";
+        link.appendChild(subtitle);
+      }
+      subtitle.textContent = "Gestão de produção";
     });
 
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);

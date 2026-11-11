@@ -1,4 +1,4 @@
-# Apresentação mvGrafix
+﻿# Apresentação mvGrafix
 
 Landing page comercial do **mvGrafix**, inspirada no estilo da [Unitech Sistemas](https://www.unitechsistemas.com.br/) — scroll contínuo, hero com typewriter, showcase interativo de módulos e CTAs.
 
@@ -32,7 +32,7 @@ Rotas capturadas: login, dashboard, pedidos, pipeline, novo pedido, orçamentos,
 7. Comercial — orçamentos + cadastros  
 8. Admin — etapas, tags e acessos  
 9. Alertas de prazo por e-mail  
-10. MV Graphics IA  
+10. MV Graphics  
 11. Diferenciais  
 12. Pilares — Comercial · Produção · Financeiro · IA  
 13. CTA final  
