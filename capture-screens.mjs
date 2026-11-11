@@ -8,6 +8,8 @@ const BASE = process.env.APP_URL || "http://localhost:3000";
 const OUT = path.join(__dirname, "screenshots");
 
 const CREDENTIALS = [
+  { email: "admin@mvgrafix.com", password: "2026mvgrafix@" },
+  { email: "admin@mvgraficos.com", password: "2026mvgraficos@" },
   { email: "admin@mvgraficas.com", password: "2026mvgraficas@" },
   { email: "admin@hlsports.local", password: "2026hlsports@" },
 ];
@@ -22,6 +24,11 @@ const routes = [
   { name: "08-financeiro", path: "/financeiro" },
   { name: "09-notas-fiscais", path: "/notas-fiscais" },
   { name: "10-admin", path: "/admin" },
+  { name: "11-ia", path: "/ia" },
+  { name: "13-cadastros", path: "/cadastros" },
+  { name: "14-retrabalho", path: "/pedidos/retrabalho" },
+  { name: "15-admin-etapas", path: "/admin/etapas" },
+  { name: "16-admin-tags", path: "/admin/tags" },
 ];
 
 async function settle(page) {
@@ -60,6 +67,51 @@ async function hideDevChrome(page) {
   }).catch(() => {});
 }
 
+/** Remove client brand (DS Designer / DS IA) from chrome before commercial screenshots. */
+async function brandForPresentation(page) {
+  await page.evaluate(() => {
+    const rewrite = (value) =>
+      String(value || "")
+        .replace(/DS Designer/gi, "mvGrafix")
+        .replace(/DS Design/gi, "mvGrafix")
+        .replace(/\bDS IA\b/gi, "MV Graphics IA")
+        .replace(/\bA DS IA\b/gi, "A MV Graphics IA");
+
+    document.querySelectorAll('a[aria-label*="DS Designer"], a[aria-label*="DS Design"]').forEach((link) => {
+      link.setAttribute("aria-label", "mvGrafix — início");
+      const title = link.querySelector("h1");
+      if (title) title.textContent = "mvGrafix";
+      const subtitle = link.querySelector("p");
+      if (subtitle) subtitle.textContent = "Gestão de produção";
+      link.querySelectorAll("img").forEach((img) => {
+        img.alt = "mvGrafix";
+        const wrap = img.closest("div");
+        if (wrap) wrap.style.display = "none";
+        else img.style.display = "none";
+      });
+    });
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    for (const node of nodes) {
+      const next = rewrite(node.nodeValue);
+      if (next !== node.nodeValue) node.nodeValue = next;
+    }
+
+    document.querySelectorAll("[aria-label], [title], [alt], [placeholder]").forEach((el) => {
+      for (const attr of ["aria-label", "title", "alt", "placeholder"]) {
+        if (!el.hasAttribute(attr)) continue;
+        const value = el.getAttribute(attr);
+        const next = rewrite(value);
+        if (next !== value) el.setAttribute(attr, next);
+      }
+    });
+
+    document.title = rewrite(document.title);
+  }).catch(() => {});
+}
+
 async function tryLogin(page, email, password) {
   await page.goto(`${BASE}/login`, { waitUntil: "domcontentloaded", timeout: 60000 });
   await settle(page);
@@ -84,6 +136,7 @@ fs.mkdirSync(OUT, { recursive: true });
 await page.goto(`${BASE}/login`, { waitUntil: "domcontentloaded", timeout: 60000 });
 await settle(page);
 await hideDevChrome(page);
+await brandForPresentation(page);
 await page.screenshot({ path: path.join(OUT, "01-login.png"), fullPage: false });
 console.log("saved 01-login.png");
 
@@ -106,6 +159,7 @@ for (const item of routes) {
   await settle(page);
   await dismissModals(page);
   await hideDevChrome(page);
+  await brandForPresentation(page);
   await settle(page);
   await page.screenshot({ path: path.join(OUT, `${item.name}.png`), fullPage: false });
   console.log(`saved ${item.name}.png`);
